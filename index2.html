@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闲鱼 AI - 智能助手</title>
+    <style>
+        :root {
+            --primary-color: #1890ff;
+            --secondary-color: #f5f5f5;
+            --text-color: #333;
+            --light-text-color: #666;
+            --accent-color: #ffd700;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .nav-bar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        .nav-logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            margin-left: 20px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .hero-section {
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            padding: 120px 5% 80px;
+            text-align: center;
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        .hero-description {
+            font-size: 1.2em;
+            color: var(--light-text-color);
+            margin-bottom: 30px;
+        }
+        .cta-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .cta-button:hover {
+            background-color: #40a9ff;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(24, 144, 255, 0.3);
+        }
+        .video-container {
+            margin: 60px auto;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .video-player {
+            width: 100%;
+            display: block;
+        }
+        .feature-section {
+            padding: 80px 5%;
+            background-color: white;
+        }
+        .feature-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .feature-content {
+            flex: 1;
+            padding-right: 50px;
+        }
+        .feature-image {
+            flex: 1;
+            text-align: center;
+        }
+        .feature-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .feature-image img:hover {
+            transform: scale(1.05);
+        }
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        .feature-description {
+            font-size: 1.1em;
+            color: var(--light-text-color);
+            margin-bottom: 30px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 5%;
+            text-align: center;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-section {
+            flex: 1;
+            margin: 0 20px;
+        }
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            font-size: 0.9em;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+<nav class="nav-bar">
+    <div class="nav-logo">闲鱼 AI</div>
+    <div class="nav-links">
+        <a href="#">闲鱼机器人</a>
+        <a href="#">闲鱼稿件 AI</a>
+        <a href="#">关键字审查</a>
+    </div>
+</nav>
+
+<section class="hero-section">
+    <div class="hero-content">
+        <h1>闲鱼卖家利器，AI一站式管理</h1>
+        <p class="hero-description">闲鱼交易瞬间高效，AI智能助手一键管理，自动回复、自动售卖，AI生成文案精美又吸引，内容创作轻松搞定，支持卖家团队协作，个人卖家免费体验AI强大功能。</p>
+        <a href="#" class="cta-button">微信+15099443576</a>
+    </div>
+
+    <div class="video-container">
+        <video class="video-player" controls>
+            <source src="https://image.songuo.zhieasy.cn/%E9%97%B2%E9%B1%BC%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D.mp4" type="video/mp4">
+            您的浏览器不支持视频标签。
+        </video>
+    </div>
+</section>
+
+<section class="feature-section">
+    <div class="feature-container">
+        <div class="feature-content">
+            <h2>智能回复助手</h2>
+            <p class="feature-description">我们的 AI 智能回复系统能够理解上下文，生成个性化的回复。提高沟通效率，让您的客户服务更上一层楼。</p>
+            <a href="#" class="cta-button">了解更多</a>
+        </div>
+        <div class="feature-image">
+            <img src="https://image.songuo.zhieasy.cn/%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E5%9B%BE%E7%89%87.png" alt="智能回复功能展示" loading="lazy">
+        </div>
+    </div>
+</section>
+
+<section class="feature-section" style="background-color: var(--secondary-color);">
+    <div class="feature-container">
+        <div class="feature-image">
+            <img src="https://image.songuo.zhieasy.cn/%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E5%9B%BE%E7%89%87.png" alt="关键词匹配功能展示" loading="lazy">
+        </div>
+        <div class="feature-content">
+            <h2>精准关键词匹配</h2>
+            <p class="feature-description">通过先进的自然语言处理技术，我们的系统能够准确识别用户需求中的关键词，实现快速、精准的响应，大幅提升用户满意度。</p>
+            <a href="#" class="cta-button">探索功能</a>
+        </div>
+    </div>
+</section>
+
+<section class="feature-section">
+    <div class="feature-container">
+        <div class="feature-content">
+            <h2>24/7 全天候服务</h2>
+            <p class="feature-description">AI助手不知疲倦，全天候为您的客户提供即时回复和支持。确保您不会错过任何潜在的商机，同时提高客户满意度。</p>
+            <a href="#" class="cta-button">查看演示</a>
+        </div>
+        <div class="feature-image">
+            <img src="https://image.songuo.zhieasy.cn/%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E5%9B%BE%E7%89%87.png" alt="数据分析功能展示" loading="lazy">
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>关于我们</h3>
+            <ul>
+                <li><a href="#">公司简介</a></li>
+                <li><a href="#">团队介绍</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>产品服务</h3>
+            <ul>
+                <li><a href="#">AI思维导图</a></li>
+                <li><a href="#">智能回复助手</a></li>
+                <li><a href="#">数据分析工具</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>帮助支持</h3>
+            <ul>
+                <li><a href="#">使用教程</a></li>
+                <li><a href="#">常见问题</a></li>
+                <li><a href="#">意见反馈</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 闲鱼AI助手. 保留所有权利。</p>
+    </div>
+</footer>
+</body>
+</html>

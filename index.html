@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闲鱼 AI - 智能助手</title>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+        }
+        .nav-bar {
+            background-color: white;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .nav-links a:hover {
+            background-color: #f0f0f0;
+        }
+        .top-section {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .top-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="10" cy="10" r="2" fill="%23ffffff22"/></svg>');
+            background-size: 30px 30px;
+            opacity: 0.3;
+        }
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        .top-section h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+        .highlight {
+            color: #FFD700;
+            position: relative;
+            display: inline-block;
+        }
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background-color: rgba(255, 215, 0, 0.3);
+            z-index: -1;
+        }
+        .description-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            animation: fadeIn 1s ease-out 0.3s backwards;
+        }
+        .top-section p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin: 0 0 30px 0;
+        }
+        .button {
+            background-color: #FFD700;
+            color: #333;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1em;
+            display: inline-block;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+        .button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+        .video-container {
+            margin: 60px auto;
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease-out 0.6s backwards;
+        }
+        .video-player {
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            position: relative;
+            background-color: #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .feature-section {
+            padding: 80px 0;
+            animation: fadeIn 1s ease-out;
+        }
+        .feature-section:nth-child(even) {
+            background-color: #1a1a2e;
+            color: white;
+        }
+        .feature-section:nth-child(odd) {
+            background-color: white;
+            color: #1a1a2e;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+        }
+        .feature-section:nth-child(even) .container {
+            flex-direction: row-reverse;
+        }
+        .content {
+            flex: 1;
+            padding: 0 50px;
+        }
+        .content h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+        .content p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-out 0.3s backwards;
+        }
+        .image-container {
+            flex: 1;
+            animation: fadeIn 1s ease-out 0.6s backwards;
+        }
+        .image-container img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .image-container img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        footer {
+            background-color: #1a1a2e;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .footer-section {
+            flex: 1;
+            margin: 0 20px;
+        }
+        .footer-section h3 {
+            margin-bottom: 20px;
+        }
+        .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-section ul li a:hover {
+            color: #FFD700;
+        }
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+    </style>
+</head>
+<body>
+<nav class="nav-bar">
+    <div class="nav-logo">闲鱼 AI</div>
+    <div class="nav-links">
+        <a href="#">闲鱼机器人</a>
+        <a href="#">闲鱼稿件 AI</a>
+        <a href="#">关键字审查</a>
+    </div>
+</nav>
+
+<div class="top-section">
+    <div class="content-wrapper">
+        <h1>闲鱼卖家利器，<span class="highlight">AI</span>一站式管理</h1>
+        <div class="description-container">
+            <p>闲鱼交易瞬间高效，AI智能助手一键管理，自动回复、自动售卖，AI生成文案精美又吸引，内容创作轻松搞定，支持卖家团队协作，个人卖家免费体验AI强大功能。</p>
+        </div>
+        <a href="#" class="button">点击试用 →</a>
+    </div>
+
+    <div class="video-container">
+        <div class="video-player">
+            <!-- 视频播放器占位符 -->
+        </div>
+    </div>
+</div>
+
+<div class="feature-section">
+    <div class="container">
+        <div class="content">
+            <h2>智能回复</h2>
+            <p>利用AI技术，自动生成个性化回复，大幅提高沟通效率。针对不同类型的询问，系统能够快速理解并给出准确、得体的回应。</p>
+            <a href="#" class="button">了解更多</a>
+        </div>
+        <div class="image-container">
+            <img src="[智能回复图片URL]" alt="智能回复功能展示" loading="lazy" />
+        </div>
+    </div>
+</div>
+
+<div class="feature-section">
+    <div class="container">
+        <div class="content">
+            <h2>关键词匹配</h2>
+            <p>通过先进的自然语言处理技术，精准识别用户需求中的关键词，实现快速、准确的响应。提高用户满意度，减少沟通成本。</p>
+            <a href="#" class="button">了解更多</a>
+        </div>
+        <div class="image-container">
+            <img src="[关键词匹配图片URL]" alt="关键词匹配功能展示" loading="lazy" />
+        </div>
+    </div>
+</div>
+
+<div class="feature-section">
+    <div class="container">
+        <div class="content">
+            <h2>24/7 全天候服务</h2>
+            <p>AI助手不知疲倦，全天候为您的客户提供即时回复和支持。确保您不会错过任何潜在的商机，同时提高客户满意度。</p>
+            <a href="#" class="button">了解更多</a>
+        </div>
+        <div class="image-container">
+            <img src="[数据分析图片URL]" alt="数据分析功能展示" loading="lazy" />
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>关于我们</h3>
+            <ul>
+                <li><a href="#">公司简介</a></li>
+                <li><a href="#">团队介绍</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>产品服务</h3>
+            <ul>
+                <li><a href="#">AI思维导图</a></li>
+                <li><a href="#">智能回复助手</a></li>
+                <li><a href="#">数据分析工具</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>帮助支持</h3>
+            <ul>
+                <li><a href="#">使用教程</a></li>
+                <li><a href="#">常见问题</a></li>
+                <li><a href="#">意见反馈</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 闲鱼AI助手. 保留所有权利。</p>
+    </div>
+</footer>
+</body>
+</html>
